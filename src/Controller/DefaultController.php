@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Services\Mensagem;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +26,15 @@ class DefaultController extends AbstractController
     public function pegarSessao(SessionInterface $session)
     {
         echo $session->get('frase');
+        exit;
+    }
+
+    /**
+     * @Route("/escrever-mensagem")
+     */
+    public function escreverMensagem(Mensagem $mensagem)
+    {
+        echo $mensagem->escreverMensagem();
         exit;
     }
 }
