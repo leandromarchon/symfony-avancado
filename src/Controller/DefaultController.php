@@ -11,10 +11,13 @@ class DefaultController extends AbstractController
     /**
      * @Route("/default", name="default")
      */
-    public function index()
+    public function index(SessionInterface $session)
     {
+        $frase = $session->get('frase');
+        
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
+            'frase' => $frase
         ]);
     }
 
