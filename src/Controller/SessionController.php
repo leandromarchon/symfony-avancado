@@ -14,7 +14,7 @@ class SessionController extends AbstractController
      */
     public function index(SessionInterface $session)
     {
-        $session->set('frase', 'Luke, I am your father!');
+        $session->set('frase', 'Luke, I am your Father!');
         exit;
     }
 }
