@@ -3,10 +3,11 @@
 namespace App\Controller;
 
 use App\Service\Mensagem;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends AbstractController
 {
@@ -55,5 +56,18 @@ class DefaultController extends AbstractController
 
         $mailer->send($message);
         return new Response("Email enviado com sucesso!");
+    }
+
+    /**
+     * @Route("/logger")
+     * @return Response
+     */
+    public function logger(LoggerInterface $logger)
+    {
+        $logger->info("Grava informações.");
+        $logger->error("Grava alguma informação de erro.");
+        $logger->critical("Grava alguma informação crítica do sistema.", array("motivo" => "Exemplo de algum erro."));
+
+        return new Response("Logger executado!");
     }
 }
