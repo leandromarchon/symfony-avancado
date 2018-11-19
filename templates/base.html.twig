@@ -3,10 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
+        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
+            <script src="{{ asset('js/script.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
